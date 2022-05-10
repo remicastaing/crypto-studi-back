@@ -2,6 +2,7 @@ from flask import Flask
 from flask_restx import Resource, Api
 import os
 import psycopg2
+from psycopg2.extras import RealDictCursor
 
 on_heroku = False
 if 'ENVIRONNEMENT' in os.environ:
@@ -36,8 +37,8 @@ class GetUtilisateur(Resource):
 
     def get(self):
       try:
-          cur = conn.cursor()
-          cur.execute("SELECT * FROM utilisateurs ORDER BY nom")
+          cur = conn.cursor(cursor_factory=RealDictCursor)
+          cur.execute("SELECT id, prenom, nom, email FROM utilisateurs ORDER BY nom")
           print("Nombre d'utilisateurs: ", cur.rowcount)
           row = cur.fetchall()
           cur.close()
