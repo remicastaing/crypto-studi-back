@@ -30,5 +30,21 @@ class GetMain(Resource):
     def get(self):
         return {'prod': on_heroku}
 
+
+@api.route('/utilisateur')
+class GetUtilisateur(Resource):
+
+    def get(self):
+      try:
+          cur = conn.cursor()
+          cur.execute("SELECT * FROM utilisateurs ORDER BY nom")
+          print("Nombre d'utilisateurs: ", cur.rowcount)
+          row = cur.fetchall()
+          cur.close()
+          return row
+      except (Exception, psycopg2.DatabaseError) as error:
+          print(error)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
