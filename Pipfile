@@ -8,6 +8,7 @@ flask = "*"
 gunicorn = "*"
 flask-restful = "*"
 flask-restx = "*"
+psycopg2 = "*"
 
 [dev-packages]
 
