@@ -1,24 +1,50 @@
 from flask_restx import Namespace, Resource, fields
-import psycopg2
-from psycopg2.extras import RealDictCursor
-from core.db_connexion import get_connexion
+
+from DAO.utilisateurs_DAO import UtilisateurDAO
+
+ns = Namespace('utilisateurs', description='opérations relatives aux utilisateurs')
+
+utilisateur = ns.model('Utilisateur', {
+    'id': fields.String(required=True, description='Reponse'),
+    'prenom': fields.String(required=True, description='Reponse'),
+    'nom': fields.String(required=True, description='Reponse'),
+    'email': fields.String(required=True, description='Reponse'),
+})
+
+DAO = UtilisateurDAO()
 
 
-api = Namespace('utilisateurs', description='opérations relatives aux utilisateurs')
-
-conn = get_connexion()
-
-
-@api.route('/')
-class Utilisateurs(Resource):
-
+@ns.route('/')
+class UtilisateursList(Resource):
+    @ns.doc('list_utilisateurs')
+    @ns.marshal_list_with(utilisateur)
     def get(self):
-        try:
-            cur = conn.cursor(cursor_factory=RealDictCursor)
-            cur.execute("SELECT id, prenom, nom, email FROM utilisateurs ORDER BY nom")
-            print("Nombre d'utilisateurs: ", cur.rowcount)
-            row = cur.fetchall()
-            cur.close()
-            return row
-        except (Exception, psycopg2.DatabaseError) as error:
-            print(error)
+        """
+        Retourne l'ensemble des utilisateurs
+        """
+        return DAO.getAll()
+
+
+@ns.route('/<string:id>')
+@ns.response(404, "L'uilisateur n'a pas été trouvé")
+@ns.param('id', "L'uuid de l'utilisateur")
+class Utilisateur(Resource):
+    '''Retourne un seul utilisateur'''
+    @ns.doc('get_utilisateur')
+    @ns.marshal_with(utilisateur)
+    def get(self, id):
+        '''Retourne un utilisateur'''
+        return DAO.get(id)
+
+    # @ns.doc('delete_todo')
+    # @ns.response(204, 'Todo deleted')
+    # def delete(self, id):
+    #     '''Delete a task given its identifier'''
+    #     DAO.delete(id)
+    #     return '', 204
+
+    # @ns.expect(todo)
+    # @ns.marshal_with(todo)
+    # def put(self, id):
+    #     '''Update a task given its identifier'''
+    #     return DAO.update(id, api.payload)

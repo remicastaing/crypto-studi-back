@@ -1,14 +1,14 @@
 from flask_restx import Namespace, Resource, fields
 
-api = Namespace('hello', description='endpoint de test')
+ns = Namespace('hello', description='endpoint de test')
 
-hello = api.model('Cat', {
+hello = ns.model('Hello', {
     'hello': fields.String(required=True, description='Reponse'),
 })
 
-@api.route('/')
+@ns.route('/')
 class HelloWorld(Resource):
-    @api.doc('Hello world')
-    @api.marshal_list_with(hello)
+    @ns.doc('Hello world')
+    @ns.marshal_list_with(hello)
     def get(self):
         return {'hello': 'world'}

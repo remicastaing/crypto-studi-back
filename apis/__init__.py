@@ -1,7 +1,7 @@
 from flask_restx import Api
 
-from .hello import api as ns_hello 
-from .utilisateurs import api as ns_utilisateurs
+from .hello import ns as ns_hello 
+from .utilisateurs import ns as ns_utilisateurs
 
 
 api = Api(
