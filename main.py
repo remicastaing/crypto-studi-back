@@ -1,6 +1,8 @@
+import os
 from flask import Flask
 from apis import api
 from core.env import is_on_heroku
+
 
 app = Flask(__name__)
 api.init_app(app)
