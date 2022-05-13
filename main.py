@@ -4,5 +4,8 @@ from core.env import is_on_heroku
 
 app = Flask(__name__)
 api.init_app(app)
-print('test 2')
-app.run(debug=not(is_on_heroku()))
+if is_on_heroku():
+    app.run(debut= False)
+else:
+    app.run(host='0.0.0.0', port=80, debug=True)
+

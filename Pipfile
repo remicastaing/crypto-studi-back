@@ -9,6 +9,8 @@ gunicorn = "*"
 flask-restful = "*"
 flask-restx = "*"
 psycopg2 = "*"
+flask-sqlalchemy = "*"
+flask-migrate = "*"
 
 [dev-packages]
 autopep8 = "*"

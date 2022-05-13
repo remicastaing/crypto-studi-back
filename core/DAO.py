@@ -36,3 +36,19 @@ class DAO():
             return row
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
+
+    def insert(self, requete: str, valeurs):
+        try: 
+            cursor = self.cursor()
+
+            cursor.execute(requete, valeurs)
+
+
+            result = cursor.fetchone()
+
+            self.connexion.commit()
+
+            cursor.close()
+            return result
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(error)        

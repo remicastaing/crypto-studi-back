@@ -1,6 +1,8 @@
+from http import HTTPStatus
 from flask_restx import Namespace, Resource, fields
 
-from DAO.utilisateurs_DAO import UtilisateurDAO
+from apis.utilisateur.dao import UtilisateurDAO
+from apis.utilisateur.parser import create_utilisateur_reqparser
 
 ns = Namespace('utilisateurs', description='opérations relatives aux utilisateurs')
 
@@ -23,6 +25,21 @@ class UtilisateursList(Resource):
         Retourne l'ensemble des utilisateurs
         """
         return DAO.getAll()
+
+    @ns.doc('create_utilisateurs')
+    @ns.marshal_with(utilisateur)
+    @ns.expect(create_utilisateur_reqparser)
+    @ns.response(int(HTTPStatus.CREATED), "Un utilisateur a été créé.")
+    @ns.response(int(HTTPStatus.FORBIDDEN), "Vous n'avez pas accès.")
+    @ns.response(int(HTTPStatus.CONFLICT), "L'utilisateur existe déjà.")
+    def post(self):
+        """ Crée un utilisateur"""
+
+        utilisateur_dict = create_utilisateur_reqparser.parse_args()
+        prenom = utilisateur_dict['prenom']
+        nom = utilisateur_dict['nom']
+        email = utilisateur_dict['email']
+        return DAO.create_utilisateur(prenom, nom, email)
 
 
 @ns.route('/<string:id>')
