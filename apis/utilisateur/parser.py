@@ -1,5 +1,5 @@
 import re
-# from flask_restx import inputs
+from flask_restx import inputs
 from flask_restx.reqparse import RequestParser
 
 
@@ -32,7 +32,7 @@ create_utilisateur_reqparser.add_argument(
 )
 create_utilisateur_reqparser.add_argument(
     "email",
-    # type=inputs.email,
+    type=inputs.email(),
     location="form",
     required=True,
     nullable=False,
