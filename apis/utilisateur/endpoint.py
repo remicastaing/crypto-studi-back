@@ -39,32 +39,27 @@ class UtilisateursList(Resource):
         prenom = utilisateur_dict['prenom']
         nom = utilisateur_dict['nom']
         email = utilisateur_dict['email']
-        return DAO.create_utilisateur(prenom, nom, email)
+        return DAO.create(prenom, nom, email)
 
 
 @ns.route('/<string:id>')
-@ns.response(404, "L'uilisateur n'a pas été trouvé")
+@ns.response(404, "L'utilisateur n'a pas été trouvé")
 @ns.param('id', "L'uuid de l'utilisateur")
 class Utilisateur(Resource):
-    '''Retourne un seul utilisateur'''
+
+
     @ns.doc('get_utilisateur')
     @ns.marshal_with(utilisateur)
     def get(self, id):
         '''Retourne un utilisateur'''
         return DAO.get(id)
 
-    # @ns.doc('delete_todo')
-    # @ns.response(204, 'Todo deleted')
-    # def delete(self, id):
-    #     '''Delete a task given its identifier'''
-    #     DAO.delete(id)
-    #     return '', 204
-
-    # @ns.expect(todo)
-    # @ns.marshal_with(todo)
-    # def put(self, id):
-    #     '''Update a task given its identifier'''
-    #     return DAO.update(id, api.payload)
+    @ns.doc('delete_utilisateur')
+    @ns.response(204, 'Utilisateur supprimé')
+    def delete(self, id):
+        '''Supprime un utilisateur'''
+        DAO.delete(id)
+        return '', 204
 
     @ns.doc('update_utilisateurs')
     @ns.marshal_with(utilisateur)
@@ -79,4 +74,4 @@ class Utilisateur(Resource):
         prenom = utilisateur_dict['prenom']
         nom = utilisateur_dict['nom']
         email = utilisateur_dict['email']
-        return DAO.update_utilisateur(id, prenom, nom, email)
+        return DAO.update(id, prenom, nom, email)

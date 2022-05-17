@@ -11,7 +11,7 @@ class UtilisateurDAO():
     def get(self, id):
         return Utilisateur.query.get(id)
 
-    def create_utilisateur(self, prenom: str, nom: str, email: str):
+    def create(self, prenom: str, nom: str, email: str):
 
         utilisateur = Utilisateur(prenom=prenom, nom=nom, email=email)
         db.session.add(utilisateur)
@@ -19,7 +19,13 @@ class UtilisateurDAO():
         db.session.refresh(utilisateur)
         return utilisateur
 
-    def update_utilisateur(self, id: str, prenom: Optional[str], nom: Optional[str], email: Optional[str]):
+    def delete(self, id):
+
+        Utilisateur.query.filter(Utilisateur.id == id).delete()
+        db.session.commit()
+
+
+    def update(self, id: str, prenom: Optional[str], nom: Optional[str], email: Optional[str]):
 
         utilisateur = Utilisateur.query.get(id)
         if prenom:
