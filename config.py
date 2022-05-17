@@ -7,12 +7,11 @@ class Config(object):
     TESTING = False
     CSRF_ENABLED = True
     SECRET_KEY = 'this-really-needs-to-be-changed'
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', '')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', '').replace('postgres', 'postgresql')
 
 
 class ProductionConfig(Config):
     DEBUG = False
-    
 
 
 class StagingConfig(Config):
