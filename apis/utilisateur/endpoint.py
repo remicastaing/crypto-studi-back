@@ -2,7 +2,7 @@ from http import HTTPStatus
 from flask_restx import Namespace, Resource, fields
 
 from apis.utilisateur.dao import UtilisateurDAO
-from apis.utilisateur.parser import create_utilisateur_reqparser
+from apis.utilisateur.parser import create_utilisateur_reqparser, update_utilisateur_reqparser
 
 ns = Namespace('utilisateurs', description='opérations relatives aux utilisateurs')
 
@@ -65,3 +65,18 @@ class Utilisateur(Resource):
     # def put(self, id):
     #     '''Update a task given its identifier'''
     #     return DAO.update(id, api.payload)
+
+    @ns.doc('update_utilisateurs')
+    @ns.marshal_with(utilisateur)
+    @ns.expect(update_utilisateur_reqparser)
+    @ns.response(int(HTTPStatus.CREATED), "L'utilisateur a été modifié.")
+    @ns.response(int(HTTPStatus.FORBIDDEN), "Vous n'avez pas accès.")
+    def put(self, id):
+        """ Modifie un utilisateur"""
+
+        utilisateur_dict = update_utilisateur_reqparser.parse_args()
+
+        prenom = utilisateur_dict['prenom']
+        nom = utilisateur_dict['nom']
+        email = utilisateur_dict['email']
+        return DAO.update_utilisateur(id, prenom, nom, email)

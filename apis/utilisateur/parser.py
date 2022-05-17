@@ -17,7 +17,7 @@ create_utilisateur_reqparser = RequestParser(bundle_errors=True)
 create_utilisateur_reqparser.add_argument(
     "nom",
     type=str,
-    location="form",
+    location='json',
     required=True,
     nullable=False,
     case_sensitive=True,
@@ -25,7 +25,7 @@ create_utilisateur_reqparser.add_argument(
 create_utilisateur_reqparser.add_argument(
     "prenom",
     type=str,
-    location="form",
+    location='json',
     required=True,
     nullable=False,
     case_sensitive=True,
@@ -33,7 +33,26 @@ create_utilisateur_reqparser.add_argument(
 create_utilisateur_reqparser.add_argument(
     "email",
     type=inputs.email(),
-    location="form",
+    location='json',
     required=True,
     nullable=False,
+)
+
+
+update_utilisateur_reqparser = RequestParser(bundle_errors=True)
+
+update_utilisateur_reqparser.add_argument(
+    "nom",
+    type=str,
+    location='json',
+)
+update_utilisateur_reqparser.add_argument(
+    "prenom",
+    type=str,
+    location='json',
+)
+update_utilisateur_reqparser.add_argument(
+    "email",
+    type=inputs.email(),
+    location='json',
 )
