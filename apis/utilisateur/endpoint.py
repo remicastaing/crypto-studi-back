@@ -1,4 +1,5 @@
 from http import HTTPStatus
+from flask_cors import cross_origin
 from flask_restx import Namespace, Resource, fields
 
 from apis.utilisateur.dao import UtilisateurDAO
@@ -46,7 +47,6 @@ class UtilisateursList(Resource):
 @ns.response(404, "L'utilisateur n'a pas été trouvé")
 @ns.param('id', "L'uuid de l'utilisateur")
 class Utilisateur(Resource):
-
 
     @ns.doc('get_utilisateur')
     @ns.marshal_with(utilisateur)

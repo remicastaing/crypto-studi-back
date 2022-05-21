@@ -1,6 +1,8 @@
 from typing import Optional
 from models import db
 from models.utilisateur import Utilisateur
+from http import HTTPStatus
+from flask_restx import abort
 
 
 class UtilisateurDAO():
@@ -12,7 +14,8 @@ class UtilisateurDAO():
         return Utilisateur.query.get(id)
 
     def create(self, prenom: str, nom: str, email: str):
-
+        # if Utilisateur.query.filter(Utilisateur.email == email):
+        #     abort(HTTPStatus.CONFLICT, f"{email} est déjà enregistré", status="fail")
         utilisateur = Utilisateur(prenom=prenom, nom=nom, email=email)
         db.session.add(utilisateur)
         db.session.commit()
@@ -21,9 +24,8 @@ class UtilisateurDAO():
 
     def delete(self, id):
 
-        Utilisateur.query.filter(Utilisateur.id == id).delete()
+        Utilisateur.query.get(id).delete()
         db.session.commit()
-
 
     def update(self, id: str, prenom: Optional[str], nom: Optional[str], email: Optional[str]):
 

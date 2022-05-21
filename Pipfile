@@ -11,6 +11,7 @@ flask-restx = "*"
 psycopg2 = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
+flask-cors = "*"
 
 [dev-packages]
 autopep8 = "*"
