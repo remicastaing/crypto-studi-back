@@ -1,0 +1,122 @@
+from flask_restx import inputs
+from flask_restx.reqparse import RequestParser
+
+
+trinome_reqparser = RequestParser(bundle_errors=True)
+
+
+trinome_reqparser.add_argument(
+    "en_vigeur",
+    type=bool,
+    location='json',
+    required=True,
+)
+trinome_reqparser.add_argument(
+    "couts_carbu",
+    type=float,
+    location='json',
+    required=True,
+)
+trinome_reqparser.add_argument(
+    "couts_pneu",
+    type=float,
+    location='json',
+    required=True,
+)
+trinome_reqparser.add_argument(
+    "couts_entretien",
+    type=float,
+    location='json',
+    required=True,
+)
+trinome_reqparser.add_argument(
+    "couts_peage",
+    type=float,
+    location='json',
+    required=True,
+)
+trinome_reqparser.add_argument(
+    "salaires",
+    type=float,
+    location='json',
+    required=True,
+)
+
+trinome_reqparser.add_argument(
+    "cotisations",
+    type=float,
+    location='json',
+    required=True,
+)
+
+trinome_reqparser.add_argument(
+    "indemnites",
+    type=float,
+    location='json',
+    required=True,
+)
+trinome_reqparser.add_argument(
+    "autres_couts",
+    type=float,
+    location='json',
+    required=True,
+)
+trinome_reqparser.add_argument(
+    "hh_totales",
+    type=float,
+    location='json',
+    required=True,
+)
+trinome_reqparser.add_argument(
+    "assurances",
+    type=float,
+    location='json',
+    required=True,
+)
+trinome_reqparser.add_argument(
+    "taxes",
+    type=float,    location='json',
+    required=True,
+)
+trinome_reqparser.add_argument(
+    "couts_structure",
+    type=float,
+    location='json',
+    required=True,
+)
+trinome_reqparser.add_argument(
+    "nbre_vehicules",
+    type=float,
+    location='json',
+    required=True,
+)
+trinome_reqparser.add_argument(
+    "nbre_jours_roulage",
+    type=float,
+    location='json',
+    required=True,
+)
+trinome_reqparser.add_argument(
+    "couts_journaliers_autres",
+    type=float,
+    location='json',
+    required=True,
+)
+trinome_reqparser.add_argument(
+    "couts_forces_fms",
+    type=float,
+    location='json',
+    required=True,
+)
+trinome_reqparser.add_argument(
+    "couts_forces_horaires",
+    type=float,
+    location='json',
+    required=True,
+)
+trinome_reqparser.add_argument(
+    "couts_forces_journaliers",
+    type=float,
+    location='json',
+    required=True,
+)
