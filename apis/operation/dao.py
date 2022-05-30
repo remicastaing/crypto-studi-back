@@ -4,25 +4,27 @@ from models.operation import Operation
 from datetime import date
 
 arguments = [
-               'en_vigeur',
-               'couts_carbu',
-               'couts_pneu',
-               'couts_entretien',
-               'couts_peage',
-               'salaires',
-               'cotisations',
-               'indemnites',
-               'autres_couts',
-               'hh_totales',
-               'assurances',
-               'taxes',
-               'couts_structure',
-               'nbre_vehicules',
-               'nbre_jours_roulage',
-               'couts_journaliers_autres',
-               'couts_forces_fms',
-               'couts_forces_horaires',
-               'couts_forces_journaliers']
+               'trinome',
+               'commercial',
+               'date',
+               'avant_kms',
+               'avant_peages',
+               'avant_tps',
+               'aller_kms',
+               'aller_peages',
+               'aller_tps',
+               'retour_kms',
+               'retour_peages',
+               'retour_tps',
+               'apres_kms',
+               'apres_peages',
+               'apres_tps',
+               'chargement_tps',
+               'dechargement_tps',
+               'chargement_unite',
+               'chargement_qtt_totale',
+               'chargement_par_tour',
+               ]
 
 class OperationDAO():
 
@@ -35,7 +37,7 @@ class OperationDAO():
     def create(self, data):
 
         operation = Operation()
-        operation.date =date.today()
+
         for key, value in data.items():
             if key in arguments:
                 setattr(operation, key, value)
@@ -54,7 +56,6 @@ class OperationDAO():
 
         operation = Operation.query.get(id)
 
-        operation.date_creation = date.today()
 
         for key, value in data.items():
             if key in arguments:

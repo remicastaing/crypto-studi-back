@@ -6,7 +6,7 @@ trinome_reqparser = RequestParser(bundle_errors=True)
 
 
 trinome_reqparser.add_argument(
-    "en_vigeur",
+    "actuel",
     type=bool,
     location='json',
     required=True,

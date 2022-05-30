@@ -30,7 +30,9 @@ class TrinomeDAO():
         return Trinome.query.all()
 
     def get(self, id):
-        return Trinome.query.get(id)
+        res = Trinome.query.get(id)
+        print(res)
+        return res
 
     def create(self, data):
 

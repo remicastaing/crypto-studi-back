@@ -1,120 +1,126 @@
-from flask_restx.reqparse import RequestParser
 
+from flask_restx.reqparse import RequestParser
+from flask_restx import inputs
 
 operation_reqparser = RequestParser(bundle_errors=True)
 
 
 operation_reqparser.add_argument(
-    "en_vigeur",
-    type=bool,
+    'trinome',
+    type=str,
     location='json',
     required=True,
 )
 operation_reqparser.add_argument(
-    "couts_carbu",
+    'commercial',
+    type=str,
+    location='json',
+    required=True,
+)
+operation_reqparser.add_argument(
+    'date',
+    type=inputs.date_from_iso8601,
+    location='json',
+    required=True,
+)
+operation_reqparser.add_argument(
+    'avant_kms',
     type=float,
     location='json',
     required=True,
 )
 operation_reqparser.add_argument(
-    "couts_pneu",
+    'avant_peages',
     type=float,
     location='json',
     required=True,
 )
 operation_reqparser.add_argument(
-    "couts_entretien",
+    'avant_tps',
     type=float,
     location='json',
     required=True,
 )
 operation_reqparser.add_argument(
-    "couts_peage",
+    'aller_kms',
     type=float,
     location='json',
     required=True,
 )
 operation_reqparser.add_argument(
-    "salaires",
-    type=float,
-    location='json',
-    required=True,
-)
-
-operation_reqparser.add_argument(
-    "cotisations",
-    type=float,
-    location='json',
-    required=True,
-)
-
-operation_reqparser.add_argument(
-    "indemnites",
+    'aller_peages',
     type=float,
     location='json',
     required=True,
 )
 operation_reqparser.add_argument(
-    "autres_couts",
+    'aller_tps',
     type=float,
     location='json',
     required=True,
 )
 operation_reqparser.add_argument(
-    "hh_totales",
+    'retour_kms',
     type=float,
     location='json',
     required=True,
 )
 operation_reqparser.add_argument(
-    "assurances",
+    'retour_peages',
     type=float,
     location='json',
     required=True,
 )
 operation_reqparser.add_argument(
-    "taxes",
-    type=float,    location='json',
-    required=True,
-)
-operation_reqparser.add_argument(
-    "couts_structure",
+    'retour_tps',
     type=float,
     location='json',
     required=True,
 )
 operation_reqparser.add_argument(
-    "nbre_vehicules",
+    'apres_kms',
     type=float,
     location='json',
     required=True,
 )
 operation_reqparser.add_argument(
-    "nbre_jours_roulage",
+    'apres_peages',
     type=float,
     location='json',
     required=True,
 )
 operation_reqparser.add_argument(
-    "couts_journaliers_autres",
+    'apres_tps',
     type=float,
     location='json',
     required=True,
 )
 operation_reqparser.add_argument(
-    "couts_forces_fms",
+    'chargement_tps',
     type=float,
     location='json',
     required=True,
 )
 operation_reqparser.add_argument(
-    "couts_forces_horaires",
+    'dechargement_tps',
     type=float,
     location='json',
     required=True,
 )
 operation_reqparser.add_argument(
-    "couts_forces_journaliers",
+    'chargement_unite',
+    type=float,
+    location='json',
+    required=True,
+)
+operation_reqparser.add_argument(
+    'chargement_qtt_totale',
+    type=float,
+    location='json',
+    required=True,
+)
+operation_reqparser.add_argument(
+    'chargement_par_tour',
     type=float,
     location='json',
     required=True,

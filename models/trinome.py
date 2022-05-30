@@ -11,7 +11,7 @@ class Trinome(db.Model):
 
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     date = db.Column(db.Date, nullable=False)
-    en_vigeur = db.Column(db.Boolean, nullable=False)
+    actuel = db.Column(db.Boolean, nullable=False)
     couts_carbu = db.Column(db.Numeric, nullable=False)
     couts_pneu = db.Column(db.Numeric, nullable=False)
     couts_entretien = db.Column(db.Numeric, nullable=False)
@@ -34,14 +34,12 @@ class Trinome(db.Model):
 
     def __repr__(self):
         return (
-            f"<Trinome id={self.id}, date={self.date}>"
+            f"<Trinome id={self.id}, date={self.date}, actuel={self.en_vigeur}>"
         )
 
     @property
     def couts_kms(self):
         return self.couts_pneu + self.couts_carbu + self.couts_entretien + self.couts_peage
-
-
 
     @property
     def couts_horaires(self):
@@ -50,4 +48,3 @@ class Trinome(db.Model):
     @property
     def couts_journaliers(self):
         return (self.assurances + self.taxes + self.couts_structure) / self.nbre_vehicules / self.nbre_jours_roulage
-
