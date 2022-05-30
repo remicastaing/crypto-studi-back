@@ -1,9 +1,7 @@
 from flask_restx import inputs
 from flask_restx.reqparse import RequestParser
 
-
 trinome_reqparser = RequestParser(bundle_errors=True)
-
 
 trinome_reqparser.add_argument(
     "actuel",

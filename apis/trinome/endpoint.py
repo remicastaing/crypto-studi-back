@@ -9,6 +9,7 @@ ns = Namespace('trinomes', description='opérations relatives aux trinomes')
 
 trinome = ns.model('Trinome', {
     'id': fields.String(required=True, description='Reponse'),
+    'actuel': fields.Boolean,
     'couts_carbu': fields.Fixed(decimals=5, required=True, description='Reponse'),
     'couts_pneu': fields.Fixed(decimals=5, required=True, description='Reponse'),
     'couts_entretien': fields.Fixed(decimals=5, required=True, description='Reponse'),
