@@ -3,7 +3,7 @@ from models import db
 from models.trinome import Trinome
 from datetime import date
 from models import db
-from sqlalchemy import update
+from sqlalchemy import select, update
 
 arguments = [
     'actuel',
@@ -34,8 +34,13 @@ class TrinomeDAO():
 
     def get(self, id):
         res = Trinome.query.get(id)
-        print(res)
         return res
+
+    def get_actuel(self):
+        res = db.session.execute(select(Trinome).
+                                 where(Trinome.actuel == True)).fetchone()
+
+        return res[0]
 
     def create(self, data):
 
@@ -52,7 +57,6 @@ class TrinomeDAO():
         db.session.add(trinome)
         db.session.commit()
         db.session.refresh(trinome)
-        print(trinome)
         return trinome
 
     def delete(self, id):

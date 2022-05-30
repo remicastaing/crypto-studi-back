@@ -63,7 +63,7 @@ class TrinomesList(Resource):
 @ns.route('/<string:id>')
 @ns.response(404, "Le trinome n'a pas été trouvé")
 @ns.param('id', "L'uuid du trinome")
-class Utilisateur(Resource):
+class Trinome(Resource):
 
     @ns.doc('get_trinome')
     @ns.marshal_with(trinome)
@@ -89,3 +89,14 @@ class Utilisateur(Resource):
         trinome_dict = trinome_reqparser.parse_args()
 
         return DAO.update(id, trinome_dict)
+
+
+@ns.route('/actuel')
+@ns.response(404, "Le trinome actuel n'a pas été trouvé")
+class TrinomeActuel(Resource):
+
+    @ns.doc('get_trinome_actuel')
+    @ns.marshal_with(trinome)
+    def get(self):
+        '''Retourne le trinome actuel'''
+        return DAO.get_actuel()
