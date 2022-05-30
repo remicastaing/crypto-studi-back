@@ -3,3 +3,4 @@ flask-restx
 Flask-SQLAlchemy
 SQLAlchemy
 gunicorn
+flask_cors
