@@ -34,7 +34,7 @@ class Trinome(db.Model):
 
     def __repr__(self):
         return (
-            f"<Trinome id={self.id}, date={self.date}, actuel={self.en_vigeur}>"
+            f"<Trinome id={self.id}, date={self.date}, actuel={self.actuel}>"
         )
 
     @property
