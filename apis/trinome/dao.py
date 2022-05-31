@@ -51,13 +51,7 @@ class TrinomeDAO():
             if key in arguments:
                 setattr(trinome, key, value)
 
-        if trinome.actuel:
-            self.set_actual_to_false()
-
-        db.session.add(trinome)
-        db.session.commit()
-        db.session.refresh(trinome)
-        return trinome
+        return self.create_trinome(trinome)
 
     def delete(self, id):
 
@@ -66,22 +60,33 @@ class TrinomeDAO():
 
     def update(self, id, data):
 
-        trinome = Trinome.query.get(id)
+        trinome = Trinome()
+        trinome.date = date.today()
 
-        trinome.date_creation = date.today()
+        old_trinome = Trinome.query.get(id)
 
-        if getattr(data, 'actuel', False):
-            self.set_actual_to_false()
+        for key, value in vars(old_trinome).items():
+            if key in arguments:
+                setattr(trinome, key, value)
 
         for key, value in data.items():
             if key in arguments:
                 setattr(trinome, key, value)
 
-        db.session.commit()
-        db.session.refresh(trinome)
-        return trinome
+        trinome.id = None
+
+        return self.create_trinome(trinome)
 
     def set_actual_to_false(self):
         db.session.execute(update(Trinome).
                            where(Trinome.actuel == True).
                            values(actuel=False))
+
+    def create_trinome(self, trinome):
+
+        if trinome.actuel:
+            self.set_actual_to_false()
+        db.session.add(trinome)
+        db.session.commit()
+        db.session.refresh(trinome)
+        return trinome
