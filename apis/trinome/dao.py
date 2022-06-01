@@ -7,6 +7,7 @@ from sqlalchemy import select, update
 
 arguments = [
     'actuel',
+    'date',
     'couts_carbu',
     'couts_pneu',
     'couts_entretien',
