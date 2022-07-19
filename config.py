@@ -22,7 +22,7 @@ class StagingConfig(Config):
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres@localhost/transcodb'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres@localhost/lalalist'
 
 
 class TestingConfig(Config):

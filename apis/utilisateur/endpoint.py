@@ -3,6 +3,10 @@ from flask_cors import cross_origin
 from flask_restx import Namespace, Resource, fields
 
 from apis.utilisateur.dao import UtilisateurDAO
+from apis.tache.dao import TacheDAO
+
+from apis.tache.endpoint import tache
+
 from apis.utilisateur.parser import create_utilisateur_reqparser, update_utilisateur_reqparser
 
 ns = Namespace('utilisateurs', description='opérations relatives aux utilisateurs')
@@ -15,6 +19,7 @@ utilisateur = ns.model('Utilisateur', {
 })
 
 DAO = UtilisateurDAO()
+TDAO = TacheDAO()
 
 
 @ns.route('/')
@@ -75,3 +80,16 @@ class Utilisateur(Resource):
         nom = utilisateur_dict['nom']
         email = utilisateur_dict['email']
         return DAO.update(id, prenom, nom, email)
+
+@ns.route('/<string:id>/taches')
+@ns.response(404, "L'utilisateur n'a pas été trouvé")
+@ns.param('id', "L'uuid de l'utilisateur")
+class Tache(Resource):
+
+    @ns.doc('list_taches_par_utilisateur')
+    @ns.marshal_list_with(tache)
+    def get(self, id):
+        """
+        Retourne l'ensemble des utilisateurs
+        """
+        return TDAO.getAllFor(id)

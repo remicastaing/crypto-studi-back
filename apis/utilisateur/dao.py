@@ -24,7 +24,8 @@ class UtilisateurDAO():
 
     def delete(self, id):
 
-        Utilisateur.query.get(id).delete()
+        utilisateur = Utilisateur.query.get(id)
+        db.session.delete(utilisateur)
         db.session.commit()
 
     def update(self, id: str, prenom: Optional[str], nom: Optional[str], email: Optional[str]):
