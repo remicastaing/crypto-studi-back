@@ -8,13 +8,17 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-
 if not(is_on_heroku()):
-    app.config.from_object(DevelopmentConfig)
+    config = DevelopmentConfig
 else:
-    app.config.from_object(ProductionConfig)
+    config = ProductionConfig
+
+
+app.config.from_object(config)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['CMC_API_KEY'] = config.CMC_API_KEY
+# app.config['CMC_API_URL'] = config.CMC_API_URL
 
 
 db.init_app(app)

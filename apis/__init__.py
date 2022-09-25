@@ -1,18 +1,20 @@
 from flask_restx import Api
 
 from .hello.endpoint import ns as ns_hello
-from .utilisateur.endpoint import ns as ns_utilisateurs
-from .liste.endpoint import ns as ns_liste
-from .tache.endpoint import ns as ns_tache
+from .cotation.endpoint import ns as ns_cotation
+from .transaction.endpoint import ns as ns_transaction
+from .valuation.endpoint import ns as ns_valuation
+from .cumul.endpoint import ns as ns_cumul
 
 
 api = Api(
-    title='API Lalalist',
+    title='API Crypto Studi',
     version='0.1',
-    description="La super géniale API de Lalalist",
+    description="API de l'application Crypto Studi",
 )
 
 api.add_namespace(ns_hello)
-api.add_namespace(ns_utilisateurs)
-api.add_namespace(ns_liste)
-api.add_namespace(ns_tache)
+api.add_namespace(ns_cotation)
+api.add_namespace(ns_transaction)
+api.add_namespace(ns_valuation)
+api.add_namespace(ns_cumul)
