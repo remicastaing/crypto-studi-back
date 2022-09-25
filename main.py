@@ -17,8 +17,6 @@ else:
 app.config.from_object(config)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# app.config['CMC_API_KEY'] = config.CMC_API_KEY
-# app.config['CMC_API_URL'] = config.CMC_API_URL
 
 
 db.init_app(app)
