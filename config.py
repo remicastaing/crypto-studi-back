@@ -1,10 +1,5 @@
 import os
 
-if not os.environ.get("PRODUCTION"):
-    from dotenv import load_dotenv
-
-    load_dotenv()
-
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 
