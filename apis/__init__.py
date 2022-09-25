@@ -1,3 +1,7 @@
+import restx_monkey as monkey
+
+monkey.patch_restx()
+
 from flask_restx import Api
 
 from .hello.endpoint import ns as ns_hello
