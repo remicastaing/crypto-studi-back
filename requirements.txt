@@ -1,9 +1,8 @@
 Flask
-flask-restx
 Flask-SQLAlchemy
 SQLAlchemy
 gunicorn
 Flask-Cors
 requests
 Werkzeug
-psycopg2-binary
+git+https://github.com/python-restx/flask-restx

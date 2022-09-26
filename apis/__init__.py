@@ -1,6 +1,4 @@
-# import restx_monkey as restx_monkey
 
-# restx_monkey.patch_restx()
 
 from flask_restx import Api
 
