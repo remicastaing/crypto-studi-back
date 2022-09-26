@@ -4,4 +4,4 @@ SQLAlchemy
 gunicorn
 Flask-Cors
 requests
-git+https://github.com/remicastaing/flask-restx
+git+https://github.com/remicastaing/my-restx.git
