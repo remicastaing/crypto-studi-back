@@ -5,4 +5,4 @@ gunicorn
 Flask-Cors
 requests
 Werkzeug
-git+https://github.com/python-restx/flask-restx
+git+https://github.com/remicastaing/flask-restx
