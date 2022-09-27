@@ -18,6 +18,8 @@ INSERT INTO public.transaction VALUES ('b5037ab2-6c87-4a02-bab7-ef77756a2324', '
 INSERT INTO public.transaction VALUES ('a82d2fcb-07bc-4ba6-8cfb-b0d94fbce0f8', '7b3afe16-4a50-42f2-a6fa-32016c3cae07', 'BTC', 0.1, '2022-09-25 00:00:00', 1961.0543969999999);
 
 
+INSERT INTO public.cotation VALUES ('BTC', '2022-09-26', 19414.29, NULL);
+INSERT INTO public.cotation VALUES ('BTC', '2022-09-25', 19542.12, NULL);
 INSERT INTO public.cotation VALUES ('BTC', '2022-09-24', 19910.23, NULL);
 INSERT INTO public.cotation VALUES ('BTC', '2022-09-23', 19730.26, NULL);
 INSERT INTO public.cotation VALUES ('BTC', '2022-09-22', 18852.13, NULL);
@@ -74,6 +76,8 @@ INSERT INTO public.cotation VALUES ('BTC', '2022-08-03', 22629.53, NULL);
 INSERT INTO public.cotation VALUES ('BTC', '2022-08-02', 22714.44, NULL);
 INSERT INTO public.cotation VALUES ('BTC', '2022-08-01', 22855.56, NULL);
 
+INSERT INTO public.cotation VALUES ('ETH', '2022-09-26', 1336.40, NULL);
+INSERT INTO public.cotation VALUES ('ETH', '2022-09-25', 1360.10, NULL);
 INSERT INTO public.cotation VALUES ('ETH', '2022-09-24', 1370.45, NULL);
 INSERT INTO public.cotation VALUES ('ETH', '2022-09-23', 1349.22, NULL);
 INSERT INTO public.cotation VALUES ('ETH', '2022-09-22', 1273.01, NULL);
@@ -130,6 +134,8 @@ INSERT INTO public.cotation VALUES ('ETH', '2022-08-03', 1608.05, NULL);
 INSERT INTO public.cotation VALUES ('ETH', '2022-08-02', 1592.99, NULL);
 INSERT INTO public.cotation VALUES ('ETH', '2022-08-01', 1646.78, NULL);
 
+INSERT INTO public.cotation VALUES ('XRP', '2022-09-26', 0.5087, NULL);
+INSERT INTO public.cotation VALUES ('XRP', '2022-09-25', 0.5044, NULL);
 INSERT INTO public.cotation VALUES ('XRP', '2022-09-24', 0.5233, NULL);
 INSERT INTO public.cotation VALUES ('XRP', '2022-09-23', 0.4931, NULL);
 INSERT INTO public.cotation VALUES ('XRP', '2022-09-22', 0.4033, NULL);
