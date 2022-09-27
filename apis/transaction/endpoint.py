@@ -45,7 +45,7 @@ class TachesList(Resource):
         date = transaction_dict['date']
         quantite = transaction_dict['quantite']
         prix = transaction_dict['prix']
-        return DAO.create( utilisateur, date, crypto, quantite, prix)
+        return DAO.create(utilisateur, date, crypto, quantite, prix)
 
 
 @ns.route('/<string:id>')

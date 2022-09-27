@@ -17,7 +17,7 @@ cumul = ns.model('Cumul', {
     'quantite': fields.Fixed(required=True, description='Quantite de crypto à cette date'),
     'valuation': fields.Fixed(required=True, description='Valuation'),
     'achat': fields.Fixed(required=True, description='Achat cumulé à cette date'),
-    'gain': fields.Fixed(required=True, description='Gain à cette date'), 
+    'gain': fields.Fixed(required=True, description='Gain à cette date'),
 })
 
 DAO = CumulDAO()

@@ -14,13 +14,13 @@ class TransactionDAO():
 
     def getAllFor(self, id):
         print("Retourne liste de tâche")
-        return db.session.query(Transaction).filter(Transaction.utilisation==id).all()
+        return db.session.query(Transaction).filter(Transaction.utilisation == id).all()
 
     def get(self, id):
         return db.session.query(Transaction).get(id)
 
     def create(self, utilisateur: str, date: datetime, crypto: str, quantite: float, prix: float):
-        transaction = Transaction(utilisateur=UUID(utilisateur), crypto=crypto, date = date, quantite=quantite, prix=prix)
+        transaction = Transaction(utilisateur=UUID(utilisateur), crypto=crypto, date=date, quantite=quantite, prix=prix)
         db.session.add(transaction)
         db.session.commit()
         db.session.refresh(transaction)
@@ -32,7 +32,11 @@ class TransactionDAO():
         db.session.delete(transaction)
         db.session.commit()
 
-    def update(self, id: str, utilisateur: Optional[str], crypto: Optional[bool], quantite: Optional[float],  prix: Optional[float]):
+    def update(
+            self, id: str, utilisateur: Optional[str],
+            crypto: Optional[bool],
+            quantite: Optional[float],
+            prix: Optional[float]):
 
         transaction = db.session.query(Transaction).get(id)
 

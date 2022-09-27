@@ -81,6 +81,7 @@ class Utilisateur(Resource):
         email = utilisateur_dict['email']
         return DAO.update(id, prenom, nom, email)
 
+
 @ns.route('/<string:id>/taches')
 @ns.response(404, "L'utilisateur n'a pas été trouvé")
 @ns.param('id', "L'uuid de l'utilisateur")

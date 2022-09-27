@@ -20,7 +20,6 @@ sql_text = text("""
                 """)
 
 
-
 class ValuationDAO():
 
     def get(self):
@@ -41,13 +40,11 @@ class ValuationDAO():
         cotations = {}
         change = {}
         for cot in cots:
-            cotations[cot.crypto] =  cot.prix
-            change[cot.crypto] =  cot.change 
+            cotations[cot.crypto] = cot.prix
+            change[cot.crypto] = cot.change
 
         for stock in stocks:
             stock['valuation'] = stock['quantite'] * Decimal(cotations[stock['crypto']])
-            stock['change'] =  Decimal(change[stock['crypto']])
-
+            stock['change'] = Decimal(change[stock['crypto']])
 
         return stocks
-

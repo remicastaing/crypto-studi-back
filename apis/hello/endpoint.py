@@ -6,6 +6,7 @@ hello = ns.model('Hello', {
     'hello': fields.String(required=True, description='Reponse'),
 })
 
+
 @ns.route('/')
 class HelloWorld(Resource):
     @ns.doc('Hello world')
